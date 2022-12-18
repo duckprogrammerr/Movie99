@@ -1,12 +1,19 @@
 import 'package:movie99/models/genre.dart';
 
+List<Movie> moviesFromJsonToList(List data) =>
+    data.map((e) => Movie.fromJson(e)).toList();
+//
+List<Genre> searchForGenres(List<dynamic> genreIds) => genreIds.map((e) {
+      return genreMovieList.firstWhere((element) => element.id == e);
+    }).toList();
+
 class Movie {
   final int id;
   final String title;
   final String overview;
   final String poster;
-  final double rating;
-  final int reviewsCount;
+  final String rating;
+  final String reviewsCount;
   final List<Genre> genres;
 
   Movie({
@@ -23,11 +30,8 @@ class Movie {
         title: json['title'],
         overview: json['overview'],
         poster: json['poster_path'],
-        rating: json['vote_average'],
-        reviewsCount: json['vote_count'],
-        genres: json['genre_ids']
-            .map((int id) =>
-                genreMovieList.firstWhere((element) => element.id == id))
-            .toList(),
+        rating: json['vote_average'].toString(),
+        reviewsCount: json['vote_count'].toString(),
+        genres: searchForGenres(json['genre_ids']),
       );
 }

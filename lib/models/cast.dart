@@ -1,8 +1,9 @@
-List<Cast> castMembersToList(List<dynamic> data) =>
-    data.map((json) => Cast.fromJson(json)).toList();
+List<Cast> castMembersToList(List data) => data.map((json) {
+      return Cast.fromJson(json);
+    }).toList();
 
 class Cast {
-  final String image;
+  final String? image;
   final String characterName;
   final String name;
   Cast({required this.image, required this.characterName, required this.name});
