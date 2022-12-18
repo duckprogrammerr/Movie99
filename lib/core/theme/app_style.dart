@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie99/core/constants/constants.dart';
 
 class AppStyle {
   // colors
@@ -24,8 +25,14 @@ class AppStyle {
   // dark theme
   static ThemeData darkTheme() => ThemeData(
         scaffoldBackgroundColor: blackgroundColor,
-        elevatedButtonTheme:
-            ElevatedButtonThemeData(style: ElevatedButton.styleFrom()),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.all(10),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Constants.radius)),
+            backgroundColor: primaryColor,
+          ),
+        ),
         fontFamily: 'Nunito',
         brightness: Brightness.dark,
       );
