@@ -3,6 +3,8 @@ class Constants {
   static const double paddin = 20;
   // font family
   static const String fontFamily = 'Nunito';
+  static const String favoriteK = 'favorites';
+  static const String introK = 'intro';
 
   // icons
   static const String _iconPath = 'assets/icons/';
