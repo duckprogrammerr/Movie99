@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:movie99/core/constants/constants.dart';
+import 'package:movie99/core/constants/app_constants.dart';
 import 'package:movie99/core/extensions/context_extension.dart';
 import 'package:movie99/core/theme/app_style.dart';
-import 'package:movie99/features/intro/widgets/scrolling_listview.dart';
+import 'package:movie99/features/walk_through/widgets/scrolling_listview.dart';
 import 'package:movie99/services/api_service.dart';
+import 'package:movie99/services/shared_preferences_service.dart';
 
-class IntroScreen extends StatelessWidget {
-  const IntroScreen({super.key});
+class WalkThroughScreen extends StatelessWidget {
+  const WalkThroughScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,24 +26,18 @@ class IntroScreen extends StatelessWidget {
                   duration: 20,
                   starterIndex: 0,
                 ),
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
                 ScrollingListView(
                   duration: 30,
                   reverse: true,
                   starterIndex: 5,
                 ),
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
                 ScrollingListView(
                   duration: 40,
                   starterIndex: 10,
                 ),
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
               ]),
             ),
           ),
@@ -65,7 +60,7 @@ class _Body extends StatelessWidget {
       child: Container(
         width: context.w,
         height: context.h * 0.4,
-        padding: const EdgeInsets.all(Constants.paddin),
+        padding: const EdgeInsets.all(AppConstants.paddin),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
           color: AppStyle.blackgroundColor,
@@ -85,22 +80,37 @@ class _Body extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(context.w * 0.7, 55),
-              ),
-              child: const Text(
-                'Get Started',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              onPressed: () {},
-            )
+            const IntroButtonWidget()
           ],
         ),
       ),
+    );
+  }
+}
+
+class IntroButtonWidget extends StatelessWidget {
+  const IntroButtonWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(context.w * 0.7, 55),
+      ),
+      child: const Text(
+        'Get Started',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      onPressed: () async {
+        final SharedPreferencesService service = SharedPreferencesService();
+        service.setWalkThrough();
+        // Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=>));
+      },
     );
   }
 }

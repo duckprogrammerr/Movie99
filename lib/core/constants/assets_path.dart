@@ -1,12 +1,4 @@
-class Constants {
-  static const double radius = 7.0;
-  static const double paddin = 20;
-  // font family
-  static const String fontFamily = 'Nunito';
-  static const String favoriteK = 'favorites';
-  static const String introK = 'intro';
-
-  // icons
+class AssetsPath {
   static const String _iconPath = 'assets/icons/';
   // home icons
   static const String homeOutlinedIcon = '${_iconPath}home_outlined.svg';

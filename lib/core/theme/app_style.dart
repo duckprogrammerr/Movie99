@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie99/core/constants/constants.dart';
+import 'package:movie99/core/constants/app_constants.dart';
 
 class AppStyle {
   // colors
@@ -29,7 +29,7 @@ class AppStyle {
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.all(10),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(Constants.radius)),
+                borderRadius: BorderRadius.circular(AppConstants.radius)),
             backgroundColor: primaryColor,
           ),
         ),

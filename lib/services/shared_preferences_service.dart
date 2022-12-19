@@ -1,25 +1,25 @@
-import 'package:movie99/core/constants/constants.dart';
+import 'package:movie99/core/constants/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferencesService {
-  Future<void> setIntro() async {
+  Future<void> setWalkThrough() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setBool(Constants.introK, true);
+    sharedPreferences.setBool(AppConstants.walkThroughK, true);
   }
 
-  Future<bool> getIntro() async {
+  Future<bool> getWalkThrough() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getBool(Constants.introK) ?? false;
+    return sharedPreferences.getBool(AppConstants.walkThroughK) ?? false;
   }
 
   Future<void> setFavoriteList(List<String> favorite) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setStringList(Constants.favoriteK, favorite);
+    sharedPreferences.setStringList(AppConstants.favoriteK, favorite);
   }
 
   Future<List<String>?> getFavoriteList() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getStringList(Constants.favoriteK);
+    return sharedPreferences.getStringList(AppConstants.favoriteK);
   }
   // get favorite list
 
