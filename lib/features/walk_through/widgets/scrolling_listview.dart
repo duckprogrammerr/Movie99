@@ -47,6 +47,12 @@ class _ScrollingListViewState extends State<ScrollingListView> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: context.w / 3,
