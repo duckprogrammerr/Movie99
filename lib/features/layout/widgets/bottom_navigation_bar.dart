@@ -16,27 +16,23 @@ class CustomBottomNavigationBar extends StatelessWidget {
       builder: (context, state) {
         return SizedBox(
           width: context.w,
-          height: 50,
+          height: 60,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               for (var i = 0; i < bottomNavItems.length; i++) ...{
                 SizedBox(
                   width: context.w / 4 - 20,
-                  child: Column(
-                    children: [
-                      InkWell(
-                        onTap: () => layoutCubit.selectIndex(i),
-                        highlightColor: Colors.transparent,
-                        splashColor: Colors.transparent,
-                        child: SvgPicture.asset(
-                          layoutCubit.state == i
-                              ? bottomNavItems[i].activeIcon
-                              : bottomNavItems[i].defaultIcon,
-                        ),
-                      ),
-                      const Spacer(),
-                    ],
+                  child: InkWell(
+                    onTap: () => layoutCubit.selectIndex(i),
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    child: SvgPicture.asset(
+                      layoutCubit.state == i
+                          ? bottomNavItems[i].activeIcon
+                          : bottomNavItems[i].defaultIcon,
+                    ),
                   ),
                 ),
               },
