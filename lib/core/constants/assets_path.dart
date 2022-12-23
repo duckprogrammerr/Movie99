@@ -11,6 +11,6 @@ class AssetsPath {
   static const String genresFilledIcon = '${_iconPath}genres_filled.svg';
   // favorite icon
   static const String favroiteOutlinedIcon =
-      '${_iconPath}icons/favroite_outlined.svg';
-  static const String favroiteFilledIcon = '${_iconPath}favroite_filled.svg';
+      '${_iconPath}favorite_outlined.svg';
+  static const String favroiteFilledIcon = '${_iconPath}favorite_filled.svg';
 }

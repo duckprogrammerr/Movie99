@@ -18,6 +18,9 @@ class AppStyle {
     fontSize: 24,
     fontWeight: FontWeight.w500,
   );
+  static const TextStyle bodyStyle = TextStyle(
+    fontSize: 16,
+  );
   static const TextStyle smallBodyStyle = TextStyle(
     fontSize: 16,
     color: greyColor,
