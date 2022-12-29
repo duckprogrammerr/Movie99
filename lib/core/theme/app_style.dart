@@ -5,7 +5,7 @@ class AppStyle {
   // colors
   static const Color primaryColor = Color(0xffFFAF36);
   static const Color redColor = Color(0xffE84545);
-  static const Color blackgroundColor = Color(0xff282934);
+  static const Color backgroundColor = Color(0xff282934);
   static const Color greyColor = Color(0xffD4D4D4);
 
   // text styles
@@ -27,7 +27,7 @@ class AppStyle {
   );
   // dark theme
   static ThemeData darkTheme() => ThemeData(
-        scaffoldBackgroundColor: blackgroundColor,
+        scaffoldBackgroundColor: backgroundColor,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.all(10),
