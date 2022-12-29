@@ -76,7 +76,7 @@ class MovieWidget extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    movie.rating,
+                    double.tryParse(movie.rating)!.toStringAsFixed(1),
                     style:
                         AppStyle.smallBodyStyle.copyWith(color: Colors.white),
                   ),
