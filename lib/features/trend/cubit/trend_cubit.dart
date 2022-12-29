@@ -6,15 +6,13 @@ import 'package:movie99/models/movie.dart';
 part 'trend_state.dart';
 
 class TrendCubit extends Cubit<TrendState> {
-  final MoviesRepostiory moviesRepostiory;
-  TrendCubit(this.moviesRepostiory) : super(TrendInitial());
-
-  List<Movie> _movies = [];
+  final MoviesRepostiory moviesRepostiory = MoviesRepostiory();
+  TrendCubit() : super(TrendInitial());
 
   Future<void> fetchMoviesList() async {
     try {
-      _movies = await moviesRepostiory.getAllTrendList();
-      emit(TrendSuccess(movies: _movies));
+      List<Movie> movies = await moviesRepostiory.getAllTrendList();
+      emit(TrendSuccess(movies: movies));
     } catch (_) {
       emit(TrendFailure());
     }
