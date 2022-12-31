@@ -8,12 +8,13 @@ import 'package:movie99/features/favorites/bloc/favorite_event.dart';
 import 'package:movie99/features/home/blocs/movie/movie_list_event.dart';
 import 'package:movie99/features/home/blocs/movie/now_playing_bloc.dart';
 import 'package:movie99/features/home/blocs/movie/upcoming_bloc.dart';
+import 'package:movie99/features/splash/splash_screen.dart';
 import 'package:movie99/features/trend/cubit/trend_cubit.dart';
-import 'package:movie99/features/walk_through/walk_through_screen.dart';
 import 'package:movie99/features/layout/cubit/layout_cubit.dart';
 
 void main() {
   Bloc.observer = BBlocObserver();
+
   runApp(const MyApp());
 }
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         title: 'Movie99',
         debugShowCheckedModeBanner: false,
         theme: AppStyle.darkTheme(),
-        home: const WalkThroughScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
