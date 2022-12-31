@@ -28,6 +28,11 @@ class AppStyle {
   // dark theme
   static ThemeData darkTheme() => ThemeData(
         scaffoldBackgroundColor: backgroundColor,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder()
+          },
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.all(10),
