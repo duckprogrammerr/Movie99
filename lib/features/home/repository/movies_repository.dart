@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:movie99/models/movie.dart';
 import 'package:movie99/services/api_service.dart';
 import 'package:movie99/services/shared_preferences_service.dart';
@@ -7,36 +10,44 @@ class MoviesRepostiory {
   final SharedPreferencesService _sharedPreferencesService =
       SharedPreferencesService();
   // favorites
-  addMovieToFavroites(Movie movie) async {
-    List<String> favroites = await _sharedPreferencesService.getFavoriteList();
-    favroites.add(movie.toString());
-    _sharedPreferencesService.setFavoriteList(favroites);
+  Future<void> addMovieToFavorites(Movie movie) async {
+    List<String> favorites = await _sharedPreferencesService.getFavoriteList();
+    favorites.add(json.encode(movie.toString()));
+    _sharedPreferencesService.setFavoriteList(favorites);
   }
 
-  removeMovieFromFavroites(Movie movie) async {
-    List<String> favroites = await _sharedPreferencesService.getFavoriteList();
-    favroites.removeWhere((e) => e == movie.toString());
-    _sharedPreferencesService.setFavoriteList(favroites);
+  Future<void> removeMovieFromFavorites(Movie movie) async {
+    List<String> favorites = await _sharedPreferencesService.getFavoriteList();
+    favorites.removeWhere((e) => e == movie.toString());
+    _sharedPreferencesService.setFavoriteList(favorites);
   }
 
-  getAllNowPlayingList(int page) async {
+  Future<List<Movie>> getAllFavoriteList() async {
+    List<String> data = await _sharedPreferencesService.getFavoriteList();
+    log(data.toString());
+    List<Movie> favorites =
+        data.map((e) => Movie.fromJson(json.decode(e))).toList();
+    return favorites;
+  }
+
+  Future<List<Movie>> getAllNowPlayingList(int page) async {
     final List<Movie> nowPlayingList =
         await _apiService.getNowPlayingList(page.toString());
     return nowPlayingList;
   }
 
-  getAllUpComingList(int page) async {
+  Future<List<Movie>> getAllUpComingList(int page) async {
     final List<Movie> nowPlayingList =
         await _apiService.getUpComingList(page.toString());
     return nowPlayingList;
   }
 
-  getAllTrendList() async {
+  Future<List<Movie>> getAllTrendList() async {
     final List<Movie> nowPlayingList = await _apiService.getTrendingMovieList();
     return nowPlayingList;
   }
 
-  getAllMoviesByGenre(int id, int page) async {
+  Future<List<Movie>> getAllMoviesByGenre(int id, int page) async {
     final List<Movie> nowPlayingList =
         await _apiService.getMoviesByGenre(id, page.toString());
     return nowPlayingList;

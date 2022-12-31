@@ -3,10 +3,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie99/core/theme/app_style.dart';
+import 'package:movie99/features/favorites/bloc/favorite_bloc.dart';
+import 'package:movie99/features/favorites/bloc/favorite_event.dart';
 import 'package:movie99/features/home/blocs/movie/movie_list_event.dart';
 import 'package:movie99/features/home/blocs/movie/now_playing_bloc.dart';
 import 'package:movie99/features/home/blocs/movie/upcoming_bloc.dart';
-import 'package:movie99/features/home/repository/movies_repository.dart';
 import 'package:movie99/features/trend/cubit/trend_cubit.dart';
 import 'package:movie99/features/walk_through/walk_through_screen.dart';
 import 'package:movie99/features/layout/cubit/layout_cubit.dart';
@@ -30,6 +31,9 @@ class MyApp extends StatelessWidget {
             create: (context) => UpcomingMoviesBloc()..add(FetchMovieList())),
         BlocProvider(
           create: (context) => TrendCubit()..fetchMoviesList(),
+        ),
+        BlocProvider(
+          create: (context) => FavoriteBloc()..add(LoadFavoriteList()),
         ),
       ],
       child: MaterialApp(

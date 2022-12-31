@@ -24,7 +24,7 @@ class WalkThroughScreen extends StatelessWidget {
             padding: const EdgeInsets.all(AppConstants.paddin),
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-              color: AppStyle.blackgroundColor,
+              color: AppStyle.backgroundColor,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

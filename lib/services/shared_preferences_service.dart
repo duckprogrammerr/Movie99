@@ -12,14 +12,15 @@ class SharedPreferencesService {
     return sharedPreferences.getBool(AppConstants.walkThroughK) ?? false;
   }
 
-  Future<void> setFavoriteList(List<String> favorite) async {
+  Future<void> setFavoriteList(List<String> movies) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setStringList(AppConstants.favoriteK, favorite);
+
+    sharedPreferences.setStringList(AppConstants.favoriteK, movies);
   }
 
-  Future<List<String>?> getFavoriteList() async {
+  Future<List<String>> getFavoriteList() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.getStringList(AppConstants.favoriteK);
+    return sharedPreferences.getStringList(AppConstants.favoriteK) ?? [];
   }
   // get favorite list
 

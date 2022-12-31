@@ -8,7 +8,7 @@ import 'package:movie99/models/movie.dart';
 class ApiService {
   static const _apiToken = '6a5bf2e11e078ec2d1776a320988c9da';
   static const _baseUrl = 'api.themoviedb.org';
-  Future<List<Movie>> getNowPlayingList({String? page = '1'}) async {
+  Future<List<Movie>> getNowPlayingList(String page) async {
     final url = Uri(
         scheme: 'https',
         host: _baseUrl,
@@ -21,14 +21,14 @@ class ApiService {
     if (response.statusCode == 200) {
       final data = json.decode(response.body)['results'];
       List<Movie> movies = moviesFromJsonToList(data);
-      print(movies);
+
       return movies;
     } else {
       throw 'Error';
     }
   }
 
-  Future<List<Movie>> getUpComingList({String? page = '1'}) async {
+  Future<List<Movie>> getUpComingList(String page) async {
     final url = Uri(
       scheme: 'https',
       host: _baseUrl,
@@ -44,13 +44,14 @@ class ApiService {
       final data = json.decode(response.body)['results'];
 
       List<Movie> movies = moviesFromJsonToList(data);
+
       return movies;
     } else {
       throw 'Error';
     }
   }
 
-  Future<List<Movie>> getTrendingMovieList({String? page = '1'}) async {
+  Future<List<Movie>> getTrendingMovieList() async {
     final url = Uri(
       scheme: 'https',
       host: _baseUrl,
@@ -70,7 +71,7 @@ class ApiService {
     }
   }
 
-  Future getMoviesByGenre(int id, {String? page = '1'}) async {
+  Future getMoviesByGenre(int id, String page) async {
     final url = Uri(
       scheme: 'https',
       host: _baseUrl,
