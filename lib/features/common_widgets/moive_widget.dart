@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie99/core/constants/app_constants.dart';
 import 'package:movie99/core/theme/app_style.dart';
+import 'package:movie99/features/home/widgets/loading_widget.dart';
 import 'package:movie99/features/movie_details/cubit/cast_cubit.dart';
 import 'package:movie99/features/movie_details/movie_details_screen.dart';
 import 'package:movie99/models/movie.dart';
@@ -39,9 +41,11 @@ class MovieWidget extends StatelessWidget {
           height: 240,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppConstants.radius + 10),
-            child: Image.network(
-              'https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster}',
+            child: CachedNetworkImage(
+              imageUrl:
+                  'https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster}',
               fit: BoxFit.fill,
+              placeholder: (context, url) => const LoadingMovieWidget(),
             ),
           ),
         ),
