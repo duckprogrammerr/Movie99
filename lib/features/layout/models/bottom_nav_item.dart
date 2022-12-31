@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:movie99/core/constants/assets_path.dart';
+import 'package:movie99/features/categories/categories_screen.dart';
+import 'package:movie99/features/favorites/favorites_screen.dart';
 import 'package:movie99/features/home/home_screen.dart';
+import 'package:movie99/features/trend/trend_screen.dart';
 
 class BottomNavItem {
   final String defaultIcon;
@@ -26,19 +29,19 @@ final List<BottomNavItem> bottomNavItems = [
   BottomNavItem(
     defaultIcon: AssetsPath.trendOutlinedIcon,
     activeIcon: AssetsPath.trendFilledIcon,
-    page: Container(),
+    page: const TrendScreen(),
     // navigatorKey: GlobalKey<NavigatorState>(),
   ),
   BottomNavItem(
     defaultIcon: AssetsPath.genresOutlinedIcon,
     activeIcon: AssetsPath.genresFilledIcon,
-    page: Container(),
+    page: const CategoriesScreen(),
     // navigatorKey: GlobalKey<NavigatorState>(),
   ),
   BottomNavItem(
     defaultIcon: AssetsPath.favroiteOutlinedIcon,
     activeIcon: AssetsPath.favroiteFilledIcon,
-    page: Container(),
+    page: const FavoriteScreen(),
     // navigatorKey: GlobalKey<NavigatorState>(),
   ),
 ];
