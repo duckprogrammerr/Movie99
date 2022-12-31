@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie99/core/constants/app_constants.dart';
 import 'package:movie99/core/theme/app_style.dart';
-import 'package:movie99/features/common_widgets/moive_widget.dart';
+import 'package:movie99/features/common_widgets/movie_list_grid_view.dart';
 import 'package:movie99/features/trend/cubit/trend_cubit.dart';
 
 class TrendScreen extends StatelessWidget {
@@ -22,20 +22,7 @@ class TrendScreen extends StatelessWidget {
               ),
               BlocBuilder<TrendCubit, TrendState>(builder: (context, state) {
                 if (state is TrendSuccess) {
-                  return GridView.builder(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(10),
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        childAspectRatio: 1 / 1.6,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                      ),
-                      itemCount: state.movies.length,
-                      itemBuilder: (context, index) =>
-                          MovieWidget(movie: state.movies[index]));
+                  return MovieListGridView(movies: state.movies);
                 } else {
                   return Container();
                 }
